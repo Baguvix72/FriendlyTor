@@ -98,5 +98,10 @@ namespace FriendlyTor
                 }
             }
         }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+        }
     }
 }
