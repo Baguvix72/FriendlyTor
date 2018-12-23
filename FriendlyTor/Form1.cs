@@ -7,18 +7,27 @@ namespace FriendlyTor
     public partial class Form1 : Form
     {
         Tor tor = new Tor();
+        ProxySettings proxySettings = new ProxySettings();
+        bool flagRunTor = false;
 
         public Form1()
         {
             InitializeComponent();
             tor.OnTorWork += Tor_OnTorWork;
+
+            button_Start.Enabled = true;
+            button_Stop.Enabled = false;
         }
 
         private void Tor_OnTorWork(object sender, EventArgs e)
         {
             Action action = () =>
             {
-                label_Status.Text = "Антиценз работает!";
+                textBox_Status.Text = "Антиценз работает!";
+                flagRunTor = true;
+
+                button_Start.Enabled = false;
+                button_Stop.Enabled = true;
             };
 
             if (InvokeRequired)
@@ -30,28 +39,64 @@ namespace FriendlyTor
         private void button_Start_Click(object sender, EventArgs e)
         {
             bool result = tor.Start();
-            if (result)
-                label_Status.Text = "Пытаемся запустить Антиценз";
+            bool resultProxy = proxySettings.SetTor();
+            if (result && resultProxy)
+            {
+                textBox_Status.Text = "Пытаемся запустить Антиценз";
+
+                button_Start.Enabled = false;
+                button_Stop.Enabled = false;
+            }
             else
-                label_Status.Text = "Не удалось запустить Антиценз!";
+            {
+                textBox_Status.Text = "Не удалось запустить Антиценз!";
+
+                button_Start.Enabled = true;
+                button_Stop.Enabled = false;
+            }
         }
 
         private void button_Stop_Click(object sender, EventArgs e)
         {
             bool result = tor.Stop();
-            if (result)
-                label_Status.Text = "Антиценз остановлен";
+            bool resultProxy = proxySettings.SetDefault();
+            if (result && resultProxy)
+            {
+                textBox_Status.Text = "Антиценз остановлен";
+                flagRunTor = false;
+
+                button_Start.Enabled = true;
+                button_Stop.Enabled = false;
+            }
             else
-                label_Status.Text = "Ошибка при остановке Антиценз";
+            {
+                textBox_Status.Text = "Ошибка при остановке Антиценз";
+                button_Start.Enabled = false;
+                button_Stop.Enabled = true;
+            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            bool result = tor.Stop();
-            if (result)
-                label_Status.Text = "Антиценз остановлен";
-            else
-                label_Status.Text = "Ошибка при остановке Антиценз";
+            if (flagRunTor)
+            {
+                bool result = tor.Stop();
+                bool resultProxy = proxySettings.SetDefault();
+                if (result && resultProxy)
+                {
+                    textBox_Status.Text = "Антиценз остановлен";
+                    flagRunTor = false;
+
+                    button_Start.Enabled = true;
+                    button_Stop.Enabled = false;
+                }
+                else
+                {
+                    textBox_Status.Text = "Ошибка при остановке Антиценз";
+                    button_Start.Enabled = false;
+                    button_Stop.Enabled = true;
+                }
+            }
         }
     }
 }
