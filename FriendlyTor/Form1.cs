@@ -15,8 +15,8 @@ namespace FriendlyTor
             InitializeComponent();
             tor.OnTorWork += Tor_OnTorWork;
 
-            button_Start.Enabled = true;
-            button_Stop.Enabled = false;
+            button_Start.Visible = true;
+            button_Stop.Visible = false;
         }
 
         private void Tor_OnTorWork(object sender, EventArgs e)
@@ -26,8 +26,8 @@ namespace FriendlyTor
                 textBox_Status.Text = "Антиценз работает!";
                 flagRunTor = true;
 
-                button_Start.Enabled = false;
-                button_Stop.Enabled = true;
+                button_Start.Visible = false;
+                button_Stop.Visible = true;
             };
 
             if (InvokeRequired)
@@ -45,14 +45,14 @@ namespace FriendlyTor
                 textBox_Status.Text = "Пытаемся запустить Антиценз";
 
                 button_Start.Enabled = false;
-                button_Stop.Enabled = false;
+                button_Stop.Visible = false;
             }
             else
             {
                 textBox_Status.Text = "Не удалось запустить Антиценз!";
 
-                button_Start.Enabled = true;
-                button_Stop.Enabled = false;
+                button_Start.Visible = true;
+                button_Stop.Visible = false;
             }
         }
 
@@ -65,14 +65,14 @@ namespace FriendlyTor
                 textBox_Status.Text = "Антиценз остановлен";
                 flagRunTor = false;
 
-                button_Start.Enabled = true;
-                button_Stop.Enabled = false;
+                button_Start.Visible = true;
+                button_Stop.Visible = false;
             }
             else
             {
                 textBox_Status.Text = "Ошибка при остановке Антиценз";
-                button_Start.Enabled = false;
-                button_Stop.Enabled = true;
+                button_Start.Visible = false;
+                button_Stop.Visible = true;
             }
         }
 
@@ -87,14 +87,14 @@ namespace FriendlyTor
                     textBox_Status.Text = "Антиценз остановлен";
                     flagRunTor = false;
 
-                    button_Start.Enabled = true;
-                    button_Stop.Enabled = false;
+                    button_Start.Visible = true;
+                    button_Stop.Visible = false;
                 }
                 else
                 {
                     textBox_Status.Text = "Ошибка при остановке Антиценз";
-                    button_Start.Enabled = false;
-                    button_Stop.Enabled = true;
+                    button_Start.Visible = false;
+                    button_Stop.Visible = true;
                 }
             }
         }

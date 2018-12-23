@@ -45,7 +45,7 @@
             this.button_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Start.ForeColor = System.Drawing.Color.Black;
-            this.button_Start.Location = new System.Drawing.Point(62, 90);
+            this.button_Start.Location = new System.Drawing.Point(62, 71);
             this.button_Start.Name = "button_Start";
             this.button_Start.Size = new System.Drawing.Size(205, 58);
             this.button_Start.TabIndex = 0;
@@ -62,7 +62,7 @@
             this.button_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Stop.ForeColor = System.Drawing.Color.Black;
-            this.button_Stop.Location = new System.Drawing.Point(62, 154);
+            this.button_Stop.Location = new System.Drawing.Point(62, 71);
             this.button_Stop.Name = "button_Stop";
             this.button_Stop.Size = new System.Drawing.Size(205, 58);
             this.button_Stop.TabIndex = 1;
@@ -79,15 +79,16 @@
             this.textBox_Status.Multiline = true;
             this.textBox_Status.Name = "textBox_Status";
             this.textBox_Status.ReadOnly = true;
-            this.textBox_Status.Size = new System.Drawing.Size(305, 62);
-            this.textBox_Status.TabIndex = 5;
+            this.textBox_Status.Size = new System.Drawing.Size(305, 53);
+            this.textBox_Status.TabIndex = 1;
+            this.textBox_Status.TabStop = false;
             this.textBox_Status.Text = "Антиценз остановлен";
             this.textBox_Status.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Антиценз";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
@@ -96,7 +97,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(329, 263);
+            this.ClientSize = new System.Drawing.Size(329, 158);
             this.Controls.Add(this.textBox_Status);
             this.Controls.Add(this.button_Stop);
             this.Controls.Add(this.button_Start);

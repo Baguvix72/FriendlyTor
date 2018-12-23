@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +18,22 @@ namespace FriendlyTor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            bool onlyInstance;
+            string mutexName = "123FRIENDLYTORONEAPPONLY321";
+            Mutex mutex = new Mutex(true, mutexName, out onlyInstance);
+
+            if (onlyInstance)
+            {
+                Application.Run(new Form1());
+            }
+            else
+            {
+                MessageBox.Show(
+                   "Приложение уже запущено",
+                   "Сообщение",
+                   MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
     }
 }
