@@ -14,9 +14,23 @@ namespace FriendlyTor
         {
             InitializeComponent();
             tor.OnTorWork += Tor_OnTorWork;
+            tor.OnTorStarting += Tor_OnTorStarting;
 
             button_Start.Visible = true;
             button_Stop.Visible = false;
+        }
+
+        private void Tor_OnTorStarting(object sender, int e)
+        {
+            Action action = () =>
+            {
+                textBox_Status.Text = String.Format("Антиценз запускается. Шаг {0}.", e);
+            };
+
+            if (InvokeRequired)
+                Invoke(action);
+            else
+                action();
         }
 
         private void Tor_OnTorWork(object sender, EventArgs e)
@@ -27,6 +41,7 @@ namespace FriendlyTor
                 flagRunTor = true;
 
                 button_Start.Visible = false;
+                button_Start.Enabled = true;
                 button_Stop.Visible = true;
             };
 
@@ -101,7 +116,16 @@ namespace FriendlyTor
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
+            Show();
             WindowState = FormWindowState.Normal;
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+            }
         }
     }
 }

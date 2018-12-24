@@ -45,7 +45,7 @@
             this.button_Start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Start.ForeColor = System.Drawing.Color.Black;
-            this.button_Start.Location = new System.Drawing.Point(62, 71);
+            this.button_Start.Location = new System.Drawing.Point(62, 61);
             this.button_Start.Name = "button_Start";
             this.button_Start.Size = new System.Drawing.Size(205, 58);
             this.button_Start.TabIndex = 0;
@@ -62,7 +62,7 @@
             this.button_Stop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Stop.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_Stop.ForeColor = System.Drawing.Color.Black;
-            this.button_Stop.Location = new System.Drawing.Point(62, 71);
+            this.button_Stop.Location = new System.Drawing.Point(62, 61);
             this.button_Stop.Name = "button_Stop";
             this.button_Stop.Size = new System.Drawing.Size(205, 58);
             this.button_Stop.TabIndex = 1;
@@ -79,7 +79,7 @@
             this.textBox_Status.Multiline = true;
             this.textBox_Status.Name = "textBox_Status";
             this.textBox_Status.ReadOnly = true;
-            this.textBox_Status.Size = new System.Drawing.Size(305, 53);
+            this.textBox_Status.Size = new System.Drawing.Size(305, 43);
             this.textBox_Status.TabIndex = 1;
             this.textBox_Status.TabStop = false;
             this.textBox_Status.Text = "Антиценз остановлен";
@@ -112,6 +112,7 @@
             this.Text = "Антиценз";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

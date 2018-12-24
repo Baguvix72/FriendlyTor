@@ -8,8 +8,11 @@ namespace FriendlyTorCore
     public class Tor
     {
         Process process = new Process();
+        readonly string changeStr = "Bootstrapped ";
         readonly string doneStr = "Bootstrapped 100%: Done";
+        int processIndex = 1;
         public event EventHandler OnTorWork;
+        public event EventHandler<int> OnTorStarting;
 
         public bool Start()
         {
@@ -52,6 +55,8 @@ namespace FriendlyTorCore
             if (!String.IsNullOrEmpty(e.Data))
                 if (e.Data.Contains(doneStr))
                     OnTorWork?.Invoke(this, e);
+                else if (e.Data.Contains(changeStr))
+                    OnTorStarting?.Invoke(this, processIndex++);
         }
     }
 }
