@@ -118,6 +118,8 @@ namespace FriendlyTor
         {
             Show();
             WindowState = FormWindowState.Normal;
+            TopMost = true;
+            TopMost = false;
         }
 
         private void Form1_Resize(object sender, EventArgs e)

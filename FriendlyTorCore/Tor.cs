@@ -54,7 +54,10 @@ namespace FriendlyTorCore
         {
             if (!String.IsNullOrEmpty(e.Data))
                 if (e.Data.Contains(doneStr))
+                {
                     OnTorWork?.Invoke(this, e);
+                    processIndex = 1;
+                }
                 else if (e.Data.Contains(changeStr))
                     OnTorStarting?.Invoke(this, processIndex++);
         }
